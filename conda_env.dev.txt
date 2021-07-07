@@ -37,8 +37,8 @@ xgboost >=0.71
 xxmotif
 
 # development-specific
-black
-flake8
+black=21.5b1  # same as in .pre-commit-config.yaml
+flake8=3.9.2  # same as in .pre-commit-config.yaml
 flake8-bugbear
 pre-commit
 pytest

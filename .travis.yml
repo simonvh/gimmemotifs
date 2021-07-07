@@ -52,10 +52,8 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - black --check gimmemotifs/ setup.py scripts/
-  - flake8 setup.py gimmemotifs/ scripts/
   - python -c 'from gimmemotifs.config import CACHE_DIR;print(CACHE_DIR)'
-  - pytest -v --disable-pytest-warnings --cov=scripts --cov=gimmemotifs --cov-report=xml test/
+  - pytest -vv --disable-pytest-warnings --cov=scripts --cov=gimmemotifs --cov-report=xml test/
 
 after_script:
   # upload test coverage data to Code Climate
