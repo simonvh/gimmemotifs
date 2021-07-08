@@ -10,6 +10,7 @@ import glob
 import sys
 import xdg
 import os
+import pathlib
 import logging
 import pkg_resources
 import inspect
@@ -288,6 +289,15 @@ class MotifConfig(object):
 
     def write(self, fo):
         self.config.write(fo)
+
+    def list_installed_libraries(self):
+        """Return a list of all motif libraries installed in this distribution.
+
+        Each returned string is suitable for use with `gimmemotifs.motif.read_motifs()`.
+        """
+        libraries_dir = pathlib.Path(self.get_motif_dir()).resolve()
+        library_paths = glob.glob(str(libraries_dir / "*.pfm"))
+        return sorted([pathlib.Path(p).name for p in library_paths])
 
 
 def parse_denovo_params(user_params=None):
